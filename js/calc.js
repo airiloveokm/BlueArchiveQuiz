@@ -290,11 +290,11 @@ function generateReport()
     let ret;
     if(mode == 0)
     {
-        ret = "今日の #Kivotos_Quiz は5問中" + correctCnt + "問正解しました！";
+        ret = "今日の #ブルくい は5問中" + correctCnt + "問正解しました！";
     }
     else
     {
-        ret = "#Kivotos_Quiz エンドレスチャレンジで" + correctCnt + "問連続正解しました！";
+        ret = "#ブルくい エンドレスチャレンジで" + correctCnt + "問連続正解しました！";
     }
 
     return ret;
