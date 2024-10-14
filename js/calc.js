@@ -1,7 +1,7 @@
 //定数
 const labelName = ['年齢', '誕生日', '身長', '趣味', '固有武器'];
 const variantName = ['age', 'birthday', 'height', 'hobby', 'weapon'];
-const localUrl = "http://localhost/baquiz/";
+const localUrl = "https://airiloveokm.github.io/BlueArchiveQuiz/";
 
 //グローバル変数
 let random = new Random(getSeed());
