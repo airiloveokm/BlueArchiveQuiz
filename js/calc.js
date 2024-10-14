@@ -126,7 +126,7 @@ function loadJsonFile() {
         }
     };
     //HTTPメソッドとアクセスするサーバーのURLを指定
-    req.open("GET", "./data/profile.json?202410140852", false);
+    req.open("GET", "./data/profile.json?202410141908", false);
     //実際にサーバーへリクエストを送信
     req.send(null);
 
