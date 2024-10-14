@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="./js/random.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <meta name="viewport" content="width=device-width">
+        <meta charset="UTF-8">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="キヴォトス プロフィールクイズ！(仮)">
+        <meta property="og:description" content="ブルアカの生徒のプロフィールに関するクイズゲームです。">
+        <meta property="og:site_name" content="キヴォトス プロフィールクイズ！(仮)">
+        <title>ブルアカプロフィールクイズ「ブルくい！」</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">ブルくい！(BETA)</a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./" id="lnkDaily">デイリー</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./?mode=1" id="lnkEndless">エンドレス</a>
+                    </li>
+                    <li class="nav-item" data-bs-toggle="modal" data-bs-target="#modalHelp">
+                        <a class="nav-link dummy" href="">ヘルプ</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid content-main">
+            <div class="row mb-3 mt-3">
+                <div class="col question-area">
+                    <span id="question-header">
+                        第<span id="question-number"></span>問
+                    </span>
+                    <span id="question">
+                        <span id="question-chara"></span>の<span id="question-genre"></span>は？
+                    </span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <button class="form-control btn-primary" type="button" id="btnAnswer1"></button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <button class="form-control btn-primary" type="button" id="btnAnswer2"></button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <button class="form-control btn-primary" type="button" id="btnAnswer3"></button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <button class="form-control btn-primary" type="button" id="btnAnswer4"></button>
+                </div>
+            </div>
+            <div class="row mb-3" id="divEndless">
+                <div class="col">
+                    <div id="result" class="alert alert-primary" role="alert">現在、<span class="correctCounter">0</span> 問連続正解中！</div>
+                </div>
+            </div>
+            <div class="row mb-3 collapse" id="divNext">
+                <div class="col align-right">
+                    <button class="form-control btn-secondary" type="button" id="btnNext">次の問題へ</button>
+                </div>
+            </div>
+            <div class="row mt-3 collapse" id="divResult">
+                <div class="col">
+                    <div id="resultAlert" class="alert alert-primary" role="alert">
+                        <div id="resultMessage">5問中、<span class="correctCounter">0</span> 問正解しました！</div>
+                        <div class="result-button-area d-flex flex-wrap gap-1">
+                            <button class="btn btn-primary btnRestart" type="button">再チャレンジ</button>
+                            <button class="btn btn-success btnCopy" type="button">結果をコピー</button>
+                            <button class="btn btn-success btnMisskey" type="button">Misskeyでシェア</button>
+                            <button class="btn btn-success btnX" type="button">Xでシェア</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalHelp" tabindex="-1" area-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">当サイトについて</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>ゲーム「ブルーアーカイブ」に登場する生徒たちのプロフィールに関する問題を、4択形式で回答していくクイズゲームです。</p>
+                            <h4>デイリーモード</h4>
+                            <p>日替わりで問題が5問出題されます。問題は日本時間午前4時（UTC19時）で切り替わります。<br />
+                            問題はその日であれば同じものが出題されますが、選択肢は毎回異なります。</p>
+                            <h4>エンドレスモード</h4>
+                            <p>不正解になるか、カテゴリ数✕キャラクター数の問題すべてに正解するまでクイズが続きます。<br />
+                            不正解になるとゲームオーバーになり、その時点での連続正解数が表示されます。</p>
+
+                            <h2>注意事項</h2>
+                            <p>出題対象となるキャラクターは2024/10/14時点で実装済みの生徒です。ただし、設問の都合上コラボキャラは対象外となります。</p>
+                            <p>シュンとシュン（幼女）はプロフィールに相違があるため、別のキャラとして扱われます。</p>
+                            <p>現在、ベータテスト期間中です。予期せぬ不具合が発生する場合があることを承知の上でご利用ください。</p>
+                            
+                            <h2>特記事項</h2>
+                            <p>当サイトは非公式です。NEXON, Nexon GamesおよびYosterのいずれとも一切関係がありません。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./js/calc.js"></script>
+    </body>
+</html>
